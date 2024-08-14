@@ -1,0 +1,110 @@
+.App {
+  text-align: center;
+  background-color: hsl(220, 13%, 18%);
+  color: white;
+  
+  .App-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+  }
+
+  &.print {
+    background-color: unset;
+    color: black;
+    
+    .App-header {
+      display: none;
+    }
+  }
+
+  .archetype {
+    &.fill-sea {
+      fill: rgb(137, 182, 249);
+    }
+    &.fill-beach {
+      fill: rgb(253, 239, 159);
+    }
+    &.fill-woods {
+      fill: rgb(159, 255, 127);
+    }
+    &.fill-plains {
+      fill: rgb(78, 186, 114);
+    }
+    &.fill-marsh {
+      fill: rgb(126, 168, 131);
+    }
+    &.fill-desert {
+      fill: rgb(249, 212, 134);
+    }
+    &.fill-hills {
+      fill: hwb(106 45% 49%);
+    }
+    &.fill-mountains {
+      fill: rgb(163, 163, 163);
+    }
+
+    &.color-sea {
+      color: rgb(137, 182, 249);
+    }
+    &.color-beach {
+      color: rgb(253, 239, 159);
+    }
+    &.color-woods {
+      color: rgb(159, 255, 127);
+    }
+    &.color-plains {
+      color: rgb(78, 186, 114);
+    }
+    &.color-marsh {
+      color: rgb(126, 168, 131);
+    }
+    &.color-desert {
+      color: rgb(249, 212, 134);
+    }
+    &.color-hills {
+      color: hwb(106 45% 49%);
+    }
+    &.color-mountains {
+      color: rgb(163, 163, 163);
+    }
+
+    &.bg-sea {
+      background: rgb(137, 182, 249);
+    }
+    &.bg-beach {
+      background: rgb(253, 239, 159);
+    }
+    &.bg-woods {
+      background: rgb(159, 255, 127);
+    }
+    &.bg-plains {
+      background: rgb(78, 186, 114);
+    }
+    &.bg-marsh {
+      background: rgb(126, 168, 131);
+    }
+    &.bg-desert {
+      background: rgb(249, 212, 134);
+    }
+    &.bg-hills {
+      background: hwb(106 45% 49%);
+    }
+    &.bg-mountains {
+      background: rgb(163, 163, 163);
+    }
+  }
+}
+
+@page {
+  size: A4 portrait;
+  margin: 0;
+}
+@media print {
+  html, body {
+    width: 297mm;
+    height: 210mm;
+  }
+}

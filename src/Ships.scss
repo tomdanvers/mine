@@ -1,0 +1,69 @@
+@use './Variables.scss' as *;
+
+.Ship-container {
+    break-inside: avoid;
+}
+
+.Ship {
+    position: relative;
+    display: inline-flex;
+    flex-shrink: 1;
+    padding: 5em 5em;
+    gap: 3em;
+    box-sizing: border-box;
+    border-radius: 1em;
+    border: solid .1em black;
+    margin: .5em;
+
+    .Ship-player {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+    
+    .ShipCard .ShipCard-face {
+        border-style: dashed;
+    }
+
+    .ShipIcon {
+        $pad: 1.25em;
+        position: absolute;
+
+        &.defense {
+            top: $pad;
+            left: 26%;
+        }
+
+        &.offense {
+            top: $pad;
+            left: 66%;
+        }
+
+        &.sensors-a {
+            bottom: $pad;
+            left: 26%;
+        }
+
+        &.sensors-b {
+            bottom: $pad;
+            left: 66%;
+        }
+
+        &.lifesupport {
+            top: 50%;
+            left: $pad;
+            transform: translate(0, -50%);
+        }
+
+        &.engines {
+            top: 50%;
+            right: $pad;
+            transform: translate(0, -50%);
+        }
+
+        .ShipIcon-arrow {
+            position: absolute;
+        }
+    }
+}

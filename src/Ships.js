@@ -1,0 +1,36 @@
+import Ship from './Ship';
+import './Ships.scss';
+
+import DroneTokens from './DroneTokens';
+
+
+function Ships(props) {
+  let ships = [
+    {
+      label: 'RED',
+      colour: '#b61313'
+    },
+    {
+      label: 'GREEN',
+      colour: '#12a354'
+    },
+    {
+      label: 'BLUE',
+      colour: '#615ee5'
+    },
+    {
+      label: 'PURPLE',
+      colour: '#c35bdb'
+    }
+  ];
+
+  return (<div>
+    <h3>Ships</h3>
+    {ships.map((ship) => (<>
+      <Ship name={ship.label} colour={ship.colour} {...props} />
+      <DroneTokens colour={ship.colour}/>
+    </>))}
+  </div>);
+}
+
+export default Ships;

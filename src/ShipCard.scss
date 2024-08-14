@@ -1,0 +1,88 @@
+@use './Variables.scss' as *;
+
+
+.ShipCard {
+    color: black;
+    font-weight: bold;
+    display: flex;
+    gap: 2px;
+    margin: 10px;
+    break-inside: avoid;
+
+    .ShipCard-face {
+        position: relative;
+        box-sizing: border-box;
+        width: $tileWidth;
+        height: $tileHeight;
+        border-radius: 1em;
+        display: flex;
+        flex-direction: column;
+        border: solid .1em black;
+        overflow: hidden;
+    }
+
+    .ShipCard-back {
+        justify-content: center;
+    }
+
+    .ShipCard-front {
+        background-color: rgb(255, 255, 255);
+        align-items: center;
+        justify-content: center;
+        $pad: .75em;
+
+        .ShipCard-header {
+            position: absolute;
+            top: 0;
+            padding: $pad;
+
+            .ShipCard-name {
+                text-transform: uppercase;
+            }
+
+            .ShipCard-cost {
+                $spacing: .5em;
+                $size: 1.2em;
+                margin-top: $spacing * 2;
+                font-size: .9em;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                gap: $spacing;
+                span {
+                    // color: white;
+                    background: white !important;
+                    border: 4px solid white;
+                    padding: $spacing;
+                    border-radius: $size * 2;
+                    width: $size;
+                    height: $size;
+                }
+            }
+        }
+        
+        .ShipCard-description {
+            padding: $pad; 
+            font-weight: normal;
+        }
+
+        .ShipIcon {
+            position: absolute;
+            left: $pad;
+            bottom: $pad;
+        }
+
+        .VP {
+            position: absolute;
+            right: $pad;
+            bottom: $pad;
+        }
+
+        .ShipCard-disposable {
+            position: absolute;
+            bottom: $pad;
+            color: red;
+
+        }
+    }
+}

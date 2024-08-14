@@ -1,0 +1,17 @@
+.StartingTiles {
+    break-after: always;
+}
+.print .StartingTiles .Tile-front {
+    transform: rotate(0);
+}
+
+.StartingTiles-list {
+    --offset-x: -75px;
+    --offset-y: 130px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.StartingTiles-list .Tile {
+    margin: 0
+}

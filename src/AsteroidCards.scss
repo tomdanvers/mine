@@ -1,0 +1,137 @@
+@use './Variables.scss' as *;
+
+.AsteroidCards {
+    .AsteroidCards-list {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        .AsteroidCard {
+            color: black;
+            font-weight: bold;
+            display: flex;
+            gap: 2px;
+            margin: 10px;
+            break-inside: avoid;
+
+            .AsteroidCard-back {
+                .AsteroidCard-type {
+                    display: flex;
+                    background: none;
+                    color: white;
+                    border-top: .2em dashed rgba(255, 255, 255, .4);
+                    align-items: flex-end;
+                    justify-content: center;
+                }
+            }
+
+            &.AsteroidCard-crust {
+                .AsteroidCard-back {
+                    .AsteroidCard-type {
+                        border-top: none;
+                    }
+                }
+            }
+
+            &.AsteroidCard-mantle, &.AsteroidCard-core {
+                .AsteroidCard-back {
+                    .AsteroidCard-type {
+                        height: 200px;
+                        display: flex;
+                        align-items: flex-end;
+                        justify-content: center;
+                    }
+                }
+            }
+
+            .AsteroidCard-face {
+                position: relative;
+                box-sizing: border-box;
+                width: $tileWidth;
+                height: $tileHeight;
+                border-radius: 1em;
+                background: red;
+                display: flex;
+                flex-direction: column;
+                border: solid .1em black;
+                overflow: hidden;
+            }
+
+            .AsteroidCard-back {
+                background-color: grey;
+                justify-content: end;
+            
+            }
+
+            .AsteroidCard-front {
+                background-color: rgb(255, 255, 255);
+            }
+
+            .AsteroidCard-type {
+                position: relative;
+                font-size: .9em;
+                padding: 1.2em 0;
+                text-transform: uppercase;
+                z-index: 1;
+                background: rgba(0, 0, 0, .05);
+                border-top: .2em dashed black;
+                box-sizing: border-box;
+            }
+
+            .VP {
+                position: absolute;
+                right: .8em;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            .AsteroidCard-resources {
+                $size: 2.5em;
+                $spacing: .75em;
+                display: flex;
+                flex-grow: 1;
+                align-items: start;
+                justify-content: left;
+                
+                .AsteroidCard-resourcesContainer {
+                    display: flex;
+                    flex-direction: column;
+                    gap: $spacing;
+                    flex-wrap: wrap;
+                    justify-content: space-around;
+                    padding: $spacing;
+                }
+
+                .AsteroidCard-resourceGroup {
+                    display: flex;
+                    gap: $spacing;
+                }
+
+                .AsteroidCard-resource {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background-color: white;
+                    border-radius: .5em;
+                    width: $size;
+                    height: $size;
+                    border: .3em solid white;
+                    outline: 1px solid #727272;
+                    box-sizing: border-box;
+
+                    &.z {
+                        border-style: dashed;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.AsteroidSVG {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 50%);
+
+    // filter: invert(1);
+}

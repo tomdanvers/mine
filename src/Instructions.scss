@@ -1,0 +1,39 @@
+.Instructions {
+    break-after: always;
+    min-height: 100vh;
+    max-width: 700px;
+    margin: 0 auto;
+    h2, h3, h4, h5, ol, ul, p {
+        text-align: left;
+    }
+
+    .bold {
+        font-weight: 600;
+    }
+
+    .italic {
+        font-style: italic;
+    }
+
+    .dice-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+        li {
+            gap: 1em;
+            display: flex;
+            align-items: center;
+        }
+        .dice-face {
+            width: 3em;
+        }
+    }
+
+    hr {
+        margin: 2em 0;
+    }
+}
+.print .Instructions {
+    color: black;
+}

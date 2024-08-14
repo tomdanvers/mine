@@ -1,0 +1,14 @@
+.SearchCards {
+    break-after: auto;
+    margin: 0 2em;
+    color: black;
+    font-size: .7em;
+    margin-bottom: 4em;
+
+    &-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        gap: 1em;
+    }
+}
