@@ -201,12 +201,13 @@ function App() {
   }, []);
 
   const renderLoading = () => (
-    <>Loading...</>
+    <>
+      <p>Loading game data from Google Drive...</p>
+    </>
   );
 
   const renderLoaded = () => (
     <>
-      {print ? (<h1>Print Version - {new Date().toDateString()}</h1>) : null}
       <Instructions />
       <AsteroidCards cardTypes={data.cardTypesMap} cards={data.cards} resources={data.resourcesMap} />
       <Ships count={4} hold={data.shipCards[0]} drone={data.shipCards[1]} cardTypes={data.shipCardTypesMap} resources={data.resourcesMap}/>
@@ -217,8 +218,7 @@ function App() {
   return (
     <div className={`App${print ? ' print' : ''}`}>
       <header className="App-header">
-        <h1>Mine</h1>
-        <p>Diggy diggy hole in space...</p>
+        {print ? (<h1>Print Version - {new Date().toDateString()}</h1>) : null}
       </header>
       <div>
         {data === null ? renderLoading() : renderLoaded()}

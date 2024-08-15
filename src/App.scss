@@ -13,16 +13,11 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-size: calc(10px + 2vmin);
   }
 
   &.print {
     background-color: unset;
     color: black;
-    
-    .App-header {
-      display: none;
-    }
   }
 
   .archetype {
