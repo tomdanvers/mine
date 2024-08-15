@@ -38,6 +38,7 @@
 
             .ShipCard-name {
                 text-transform: uppercase;
+                padding: 0 3em;
             }
 
             .ShipCard-cost {
@@ -79,9 +80,13 @@
 
         .ShipCard-disposable {
             position: absolute;
-            bottom: $pad;
-            color: red;
-
+            top: 0;
+            right: 0;
+            color: white;
+            background: red;
+            border: 2px solid red;
+            width: 100%;
+            transform: translate(95px, 22px) rotate(45deg);
         }
     }
 }

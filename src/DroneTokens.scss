@@ -9,9 +9,12 @@
 
     .DroneToken {
         .ShipIcon {
+            .ShipIcon-imageContainer {
+                border-width: 1em;
+            }
             img {
                 opacity: 1;
-                filter: invert(1)
+                filter: invert(1);
             }
         }
     }

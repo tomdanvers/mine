@@ -20,6 +20,17 @@ function Instructions(props) {
         <li>3 player game - 4 cards</li>
         <li>4 player game - 5 cards</li>
       </ul>
+      <p>Give every player a ship board and one drone token that matches the colour of their ship board. Players place their drone token on their ship board in the space marked 'Drone Bay'.</p>
+      <p>Choose a player to take the first turn...</p>
+      <h3>Turn Sequence</h3>
+      <p>In their turn a player can perform the following actions in this order:</p>
+      <ol>
+        <li>Use 'start of turn' abilities from ship upgrade cards</li>
+        <li>Move a single drone they control</li>
+        <li>Mine a single resource</li>
+        <li>Purchase ship upgrade cards</li>
+        <li>Use 'end of turn' abilities from ship upgrade cards</li>
+      </ol>
     </div>
   );
 }

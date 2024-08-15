@@ -127,6 +127,7 @@ function App() {
       type: datum.type,
       count: datum.count,
       name: datum.name,
+      phase: datum.phase === '' ? false : datum.phase,
       description: datum.description === '' ? false : datum.description.trim(),
       isDisposable: datum.disposable === 'TRUE',
       vp: int(datum.vp),
@@ -134,7 +135,8 @@ function App() {
         parseResourceCost('a', datum.cost_a),
         parseResourceCost('b', datum.cost_b),
         parseResourceCost('c', datum.cost_c),
-        parseResourceCost('d', datum.cost_d)
+        parseResourceCost('d', datum.cost_d),
+        parseResourceCost('z', datum.cost_z)
       ]
     }
   }
@@ -173,6 +175,18 @@ function App() {
 
     parsedData.shipCardTypesMap = {};
     parsedData.shipCardTypes.forEach(shipCardType => parsedData.shipCardTypesMap[shipCardType.id] = shipCardType);
+
+    parsedData.shipCardMap = {};
+    parsedData.shipCards.forEach(shipCard => parsedData.shipCardMap[shipCard.id] = shipCard);
+
+    // Replace reference to other ship cards in descriptions
+    parsedData.shipCards.forEach((shipCardA) => {
+      parsedData.shipCards.forEach((shipCardB) => {
+        if (shipCardA !== shipCardB && shipCardA.description) {
+          shipCardA.description = shipCardA.description.replaceAll(`[SC:${shipCardB.id}]`, shipCardB.name);
+        }
+      });
+    });
 
     return parsedData;
   };

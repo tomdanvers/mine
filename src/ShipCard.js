@@ -3,13 +3,18 @@ import VP from './VP';
 
 import './ShipCard.scss';
 
+const PhaseCopy = {
+  start: 'Use at the start of your turn.',
+  end: 'Use at the end of your turn.'
+};
+
 function ShipCard(props) {
 
   const iconWidth = 70;
   const iconHeight = 70;
 
   const renderCost = () => {
-    return props.costs.map((cost) => cost.cost > 0 ? (<span className={`resource-${cost.id}`} style={{backgroundColor: props.resources[cost.id].colour, borderColor: props.resources[cost.id].colour}}>{cost.cost}</span>) : null);
+    return props.costs.map((cost) => cost.cost > 0 ? (<span className={`resource-${cost.id}`} style={{backgroundColor: props.resources[cost.id].colour, borderColor: props.resources[cost.id].colour, borderStyle: cost.id === 'z' ? 'dashed' : 'solid'}}>{cost.cost}</span>) : null);
   };
 
   const renderBack = () => {
@@ -25,9 +30,9 @@ function ShipCard(props) {
         <div className="ShipCard-name">{props.name}</div>
         <div className="ShipCard-cost">{renderCost()}</div>
       </div>
-      <div className="ShipCard-description">{props.description}</div>
+      <div className="ShipCard-description">{props.phase ? (<p>{PhaseCopy[props.phase]}</p>) : null}{props.description}</div>
       <ShipIcon id={props.type.id} width={iconWidth} height={iconHeight}/>
-      {props.isDisposable ? (<div className="ShipCard-disposable">DISCARD!</div>) : null}
+      {props.isDisposable ? (<div className="ShipCard-disposable print-bg">DISCARD</div>) : null}
       <VP vp={props.vp} />
     </div>
   </div>)
