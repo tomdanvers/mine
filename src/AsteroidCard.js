@@ -20,7 +20,7 @@ function AsteroidCard(props) {
     <div className="AsteroidCard-face AsteroidCard-front">
       <div className="AsteroidCard-resources">
         <div className="AsteroidCard-resourcesContainer">
-          {props.counts.map((count, index) => count.count > 0 ? (<div className="AsteroidCard-resourceGroup">{renderResourceGroup(count, index)}</div>) : null)}
+          {props.counts.map((count, index) => count.count > 0 ? (<div key={index} className="AsteroidCard-resourceGroup">{renderResourceGroup(count, index)}</div>) : null)}
         </div>
       </div>
       <div className="AsteroidCard-type">

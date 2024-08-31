@@ -40,7 +40,7 @@ function AsteroidSVG(props) {
 
     return (<>
       {/* <rect x={x} y={y} width={width} height={height} fill="red" /> */}
-      {stars.map((star) => (<rect x={star.x} y={star.y} width={star.size} height={star.size} fill='white' />))}
+      {stars.map((star, index) => (<rect key={index} x={star.x} y={star.y} width={star.size} height={star.size} fill='white' />))}
     </>)
   };
 

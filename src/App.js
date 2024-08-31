@@ -5,6 +5,7 @@ import Instructions from './Instructions';
 import AsteroidCards from './AsteroidCards';
 import Ships from './Ships';
 import ShipCards from './ShipCards';
+import GameDataInsights from './GameDataInsights';
 
 
 function App() {
@@ -122,7 +123,7 @@ function App() {
   };
 
   const parseShipCard = (datum) => {
-    return {
+    let shipCard = {
       id: datum.id,
       type: datum.type,
       count: datum.count,
@@ -131,6 +132,7 @@ function App() {
       description: datum.description === '' ? false : datum.description.trim(),
       isDisposable: datum.disposable === 'TRUE',
       vp: int(datum.vp),
+      costTotal: 0,
       costs: [
         parseResourceCost('a', datum.cost_a),
         parseResourceCost('b', datum.cost_b),
@@ -138,7 +140,11 @@ function App() {
         parseResourceCost('d', datum.cost_d),
         parseResourceCost('z', datum.cost_z)
       ]
-    }
+    };
+
+    shipCard.costTotal = shipCard.costs.reduce((val, item) => val += item.cost, 0);
+
+    return shipCard;
   }
 
   const parseShipCards = (srcData) => {
@@ -187,6 +193,13 @@ function App() {
         }
       });
     });
+
+    // // Sort cards
+    // parsedData.shipCards.sort((a, b) => {
+    //   return a.costTotal - b.costTotal;
+    // });
+
+    GameDataInsights.log(parsedData);
 
     return parsedData;
   };

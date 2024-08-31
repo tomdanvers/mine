@@ -25,11 +25,12 @@ function Ships(props) {
   ];
 
   return (<div>
-    <h3>Ships</h3>
-    {ships.map((ship) => (<>
-      <Ship name={ship.label} colour={ship.colour} {...props} />
-      <DroneTokens colour={ship.colour}/>
-    </>))}
+    <h2>Ships</h2>
+    {ships.map((ship, index) => (
+      <div key={index} className='Ships-shipContainer'>
+        <Ship name={ship.label} colour={ship.colour} {...props} />
+        <DroneTokens colour={ship.colour}/>
+      </div>))}
   </div>);
 }
 
