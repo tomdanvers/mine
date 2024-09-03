@@ -48,7 +48,7 @@ function App() {
     srcData.forEach((datum) => {
       if (datum.id !== '') {
         parsedData.push({
-          id: datum.id.replace('resource_', ''),
+          id: datum.id,
           name: datum.name,
           nameShort: datum.name.substring(0, 1),
           description: datum.description,
@@ -114,6 +114,21 @@ function App() {
     });
     return parsedData;
   }
+
+  const parseShipCardArchetypes = (srcData) => {
+    let parsedData = [];
+    srcData.forEach((datum) => {
+      if (datum.id !== '') {
+        parsedData.push({
+          id: datum.id,
+          count: int(datum.count),
+          label: datum.label
+        });
+      }
+    });
+    parsedData.sort((a, b) => a.count - b.count);
+    return parsedData;
+  }
   
   const parseResourceCost = (id, cost) => {
     return {
@@ -125,6 +140,7 @@ function App() {
   const parseShipCard = (datum) => {
     let shipCard = {
       id: datum.id,
+      archetype: datum.archetype,
       type: datum.type,
       count: datum.count,
       name: datum.name,
@@ -170,6 +186,7 @@ function App() {
       cardTypes: parseCardTypes(parse('card_types', data)),
       cards: parseCards(parse('cards',data)),
       shipCardTypes: parseShipCardTypes(parse('ship_card_types', data)),
+      shipCardArchetypes: parseShipCardArchetypes(parse('ship_card_archetypes', data)),
       shipCards: parseShipCards(parse('ship_cards', data)),
     };
 
@@ -182,22 +199,39 @@ function App() {
     parsedData.shipCardTypesMap = {};
     parsedData.shipCardTypes.forEach(shipCardType => parsedData.shipCardTypesMap[shipCardType.id] = shipCardType);
 
+    parsedData.shipCardArchetypesMap = {};
+    parsedData.shipCardArchetypes.forEach(shipCardArchetype => parsedData.shipCardArchetypesMap[shipCardArchetype.id] = shipCardArchetype);
+
     parsedData.shipCardMap = {};
     parsedData.shipCards.forEach(shipCard => parsedData.shipCardMap[shipCard.id] = shipCard);
 
-    // Replace reference to other ship cards in descriptions
     parsedData.shipCards.forEach((shipCardA) => {
+
+      // Replace arcetype id with actual id
+      shipCardA.archetype = parsedData.shipCardArchetypesMap[shipCardA.archetype];
+
+      // Replace reference to other ship cards in descriptions
       parsedData.shipCards.forEach((shipCardB) => {
         if (shipCardA !== shipCardB && shipCardA.description) {
           shipCardA.description = shipCardA.description.replaceAll(`[SC:${shipCardB.id}]`, shipCardB.name);
         }
       });
+      
+      // Replace reference to resources in tiles and descriptions
+      parsedData.resources.forEach((resourceA) => {
+        if (shipCardA.name) {
+          shipCardA.name = shipCardA.name.replaceAll(`[R:${resourceA.id}]`, resourceA.name);
+        }
+        if (shipCardA.description) {
+          shipCardA.description = shipCardA.description.replaceAll(`[R:${resourceA.id}]`, resourceA.name);
+        }
+      });
     });
 
     // // Sort cards
-    // parsedData.shipCards.sort((a, b) => {
-    //   return a.costTotal - b.costTotal;
-    // });
+    parsedData.shipCards.sort((a, b) => {
+      return a.archetype.count - b.archetype.count;
+    });
 
     GameDataInsights.log(parsedData);
 
@@ -223,8 +257,8 @@ function App() {
     <>
       <Instructions />
       <AsteroidCards cardTypes={data.cardTypesMap} cards={data.cards} resources={data.resourcesMap} />
-      <Ships count={4} hold={data.shipCards[0]} drone={data.shipCards[1]} cardTypes={data.shipCardTypesMap} resources={data.resourcesMap}/>
-      <ShipCards cardTypes={data.shipCardTypesMap} cards={data.shipCards} resources={data.resourcesMap} />
+      <Ships count={4} hold={data.shipCardMap['1']} drone={data.shipCardMap['2']} cardTypes={data.shipCardTypesMap} resources={data.resourcesMap}/>
+      <ShipCards cardArchetypes={data.shipCardArchetypesMap} cardTypes={data.shipCardTypesMap} cards={data.shipCards} resources={data.resourcesMap} />
     </>
   );
 

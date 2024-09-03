@@ -3,7 +3,7 @@ import './DroneTokens.scss';
 
 function DroneTokens(props) {
   return (<div className='DroneTokens'>
-    <DroneToken {...props} />
+    {/* <DroneToken {...props} /> */}
     <DroneToken {...props} />
   </div>);
 }

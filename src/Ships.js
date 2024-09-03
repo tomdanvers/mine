@@ -8,19 +8,19 @@ function Ships(props) {
   let ships = [
     {
       label: 'RED',
-      colour: '#b61313'
+      colour: '#b50000'
     },
     {
       label: 'GREEN',
-      colour: '#12a354'
+      colour: '#007d06'
     },
     {
       label: 'BLUE',
-      colour: '#615ee5'
+      colour: '#0032c1'
     },
     {
       label: 'PURPLE',
-      colour: '#c35bdb'
+      colour: '#6e15e8'
     }
   ];
 

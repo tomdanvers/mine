@@ -47,7 +47,7 @@ function Instructions(props) {
       <p>How to make the card placement or act of mining feel more interesting? Somehow use asteroid cards you've claimed?</p>
       <p>Consider making upgrade cards tiered? Like different decks of different quality? Bronze, Silver, Gold</p>
       <p><s>How does the player burn ship upgrade pool? If 3 cards are useless then can they be binned/replaced? What is the cost?</s> Maybe discard a card from stack of mined asteroid layers?</p>
-      <p><s>Dump idea of multiple drones? Replace drone bay with something else? Advanced drone bay. What does it do?</s> Try "The player can perform the "mine resource" action even if their drone moved. Additionally this player can't be the target of the "[SC:5]" upgrade"</p>
+      <p><s>Dump idea of multiple drones? Replace drone bay with something else? Advanced drone bay. What does it do? Try "The player can perform the "mine resource" action even if their drone moved. Additionally this player can't be the target of the "[SC:5]" upgrade"</s></p>
       <hr />
     </div>
   );

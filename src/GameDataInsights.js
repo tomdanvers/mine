@@ -33,8 +33,13 @@ const GameDataInsights = {
         console.log('');
         console.log('Ship Card Resource Spread');
         resourceCounts = {};
+        let archetypeCounts = {};
+        data.shipCardArchetypes.forEach((shipCardArchetype) => {
+            archetypeCounts[shipCardArchetype.id] = 0;
+        });
         total = 0;
         data.shipCards.forEach(shipCard => {
+            archetypeCounts[shipCard.archetype.id] ++;
             shipCard.costs.forEach(cost => {
                 if (resourceCounts[cost.id] === undefined) {
                     resourceCounts[cost.id] = 0;
@@ -42,10 +47,17 @@ const GameDataInsights = {
                 resourceCounts[cost.id] += cost.cost;
                 total += cost.cost;
             });
+
         });
         data.resources.forEach(resource => {
             console.log(resource.id, resource.name, `${resourceCounts[resource.id]}/${total}`, percentage(resourceCounts[resource.id], total))
         });
+
+        console.log('');
+        console.log('Ship Card Archetype Count');
+        data.shipCardArchetypes.forEach((shipCardArchetype) => {
+            console.log(shipCardArchetype.count, shipCardArchetype.label, archetypeCounts[shipCardArchetype.id])
+        })
 
         console.log('================')
     }
